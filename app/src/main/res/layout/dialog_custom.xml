@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout android:orientation="vertical"
+    android:background="@color/verde"
+    android:layout_height="fill_parent"
+    android:layout_width="300dp"
+    android:id="@+id/custom_root_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:layout_height="60dp"
+            android:layout_width="fill_parent"
+            android:id="@+id/custom_title"
+            android:textSize="24sp"
+            android:textColor="@color/blanco"
+            android:text="Nuevo Aviso:"
+            android:padding="10dp"
+            android:gravity="center_vertical"/>
+
+
+    <EditText android:background="@color/gris_claro"
+        android:layout_height="100dp"
+        android:layout_width="fill_parent"
+        android:id="@+id/custom_edit_reminder"
+        android:textColor="@color/negro"
+        android:gravity="start"
+        android:layout_margin="4dp">
+
+        <requestFocus/>
+
+    </EditText>
+
+    <CheckBox android:background="@color/negro"
+        android:layout_height="30dp"
+        android:layout_width="fill_parent"
+        android:id="@+id/custom_check_box"
+        android:textColor="@color/blanco"
+        android:text="Importante"
+        android:layout_margin="4dp"
+        android:paddingLeft="32dp"/>
+
+    <LinearLayout android:orientation="horizontal"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+
+        <Button android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:id="@+id/custom_button_cancel"
+            android:textColor="@color/negro"
+            android:text="Cancelar"
+            android:layout_weight="50"/>
+
+        <Button android:layout_height="60dp"
+            android:layout_width="0dp"
+            android:id="@+id/custom_button_commit"
+            android:textColor="@color/negro"
+            android:text="Enviar"
+            android:layout_weight="50"/>
+
+    </LinearLayout>
+
+</LinearLayout>
