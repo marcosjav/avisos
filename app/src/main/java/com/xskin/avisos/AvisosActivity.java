@@ -74,7 +74,7 @@ public class AvisosActivity extends AppCompatActivity {
                 AvisosActivity.this,
                 //el layout de la fila
                 R.layout.avisos_row,
-                //cursor
+                //cursors
                 cursor,
                 //desde columnas definidas en la base de datos
                 from,
