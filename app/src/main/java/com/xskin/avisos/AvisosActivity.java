@@ -175,6 +175,7 @@ public class AvisosActivity extends AppCompatActivity {
         TextView titleView = (TextView) dialog.findViewById(R.id.custom_title);
         final EditText editCustom = (EditText) dialog.findViewById(R.id.custom_edit_reminder);
         Button commitButton = (Button) dialog.findViewById(R.id.custom_button_commit);
+
         final CheckBox checkBox = (CheckBox) dialog.findViewById(R.id.custom_check_box);
         LinearLayout rootLayout = (LinearLayout) dialog.findViewById(R.id.custom_root_layout);
         final boolean isEditOperation = (aviso != null);
@@ -255,14 +256,17 @@ public class AvisosActivity extends AppCompatActivity {
 
         TextView titleView = (TextView) dialog.findViewById(R.id.custom_title);
         final EditText editCustom = (EditText) dialog.findViewById(R.id.not_reminder);
+        final EditText editContent = (EditText) dialog.findViewById(R.id.not_content);
         Button commitButton = (Button) dialog.findViewById(R.id.not_btn_enviar);
         LinearLayout rootLayout = (LinearLayout) dialog.findViewById(R.id.custom_root_layout);
-
+        // boton enviar y cancelar, llama al metodo que setea la notificacion.
         commitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String reminderText = editCustom.getText().toString();
-                notificacion(1, R.mipmap.ic_launcher, "Nombre APP", "Nueva encuesta.", reminderText);
+                String ContentText = editContent.getText().toString();
+                //metodo de notificacion con 5 paramentros se puede poner mas cosas si es necesario.
+                notificacion(1, R.mipmap.ic_launcher, "Nombre APP", ContentText, reminderText);
                 dialog.dismiss();
             }
         });

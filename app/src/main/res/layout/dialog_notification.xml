@@ -25,9 +25,21 @@
         android:layout_margin="4dp"
         android:background="@color/gris_claro"
         android:gravity="start"
-        android:textColor="@color/negro">
+        android:textColor="@color/negro"
+        android:hint="Mensaje de aviso" >
 
         <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/not_content"
+        android:layout_width="fill_parent"
+        android:layout_height="41dp"
+        android:layout_margin="4dp"
+        android:background="@color/gris_claro"
+        android:gravity="start"
+        android:textColor="@color/negro"
+        android:hint="Tipo de aviso">
 
     </EditText>
 
