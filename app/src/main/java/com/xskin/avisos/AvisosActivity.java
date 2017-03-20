@@ -2,11 +2,14 @@ package com.xskin.avisos;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
+import android.app.NotificationManager;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.util.Printer;
 import android.view.ActionMode;
@@ -33,6 +36,7 @@ public class AvisosActivity extends AppCompatActivity {
     private ListView mListView;
     private AvisosDBAdapter mDbAdapter;
     private AvisosSimpleCursorAdapter mCursorAdapter;
+    private NotificationManager notificacion;
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 
@@ -158,6 +162,8 @@ public class AvisosActivity extends AppCompatActivity {
             });
 
         }
+
+        notificacion = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     }
 
     private void fireCustomDialog(final Aviso aviso) {
@@ -226,12 +232,66 @@ public class AvisosActivity extends AppCompatActivity {
             case R.id.action_nuevo:
                 fireCustomDialog(null);
                 return true;
+
+            case R.id.action_notificacion:
+                CreateNotification();
+                return true;
+
             case R.id.action_salir:
                 finish();
                 return true;
+
             default:
                 return false;
         }
 
+    }
+
+    private void CreateNotification() {
+        // notificacion dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_notification);
+
+        TextView titleView = (TextView) dialog.findViewById(R.id.custom_title);
+        final EditText editCustom = (EditText) dialog.findViewById(R.id.not_reminder);
+        Button commitButton = (Button) dialog.findViewById(R.id.not_btn_enviar);
+        LinearLayout rootLayout = (LinearLayout) dialog.findViewById(R.id.custom_root_layout);
+
+        commitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String reminderText = editCustom.getText().toString();
+                notificacion(1, R.mipmap.ic_launcher, "Nombre APP", "Nueva encuesta.", reminderText);
+                dialog.dismiss();
+            }
+        });
+
+        Button buttonCancel = (Button) dialog.findViewById(R.id.not_btn_cancel);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public void notificacion(int id, int iconId, String titulo, String contenido, String content){
+        NotificationCompat.Builder builder=
+                (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                        .setSmallIcon(iconId)
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),
+                                R.mipmap.ic_launcher))
+
+                        .setColor(getResources().getColor(R.color.colorAccent, null));
+        NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle(builder);
+        style.bigText(content)
+                .setBigContentTitle(titulo)
+                .setSummaryText(contenido);
+
+        notificacion.notify(id, builder.build());
     }
 }

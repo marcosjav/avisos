@@ -3,4 +3,5 @@
     <string name="action_settings">Settings</string>
     <string name="nuevo_aviso">Nuevo aviso</string>
     <string name="salir">Salir</string>
+    <string name="notificacion">Notificacion</string>
 </resources>

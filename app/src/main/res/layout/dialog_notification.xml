@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout android:orientation="vertical"
+    android:background="@color/colorAccent"
+    android:layout_height="fill_parent"
+    android:layout_width="300dp"
+    android:id="@+id/custom_root_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/custom_title"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="Nueva notificacion:"
+        android:textColor="@color/blanco"
+        android:textSize="24sp" />
+
+
+    <EditText
+        android:id="@+id/not_reminder"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_margin="4dp"
+        android:background="@color/gris_claro"
+        android:gravity="start"
+        android:textColor="@color/negro">
+
+        <requestFocus />
+
+    </EditText>
+
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+
+        <Button
+            android:id="@+id/not_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="50"
+            android:text="Cancelar"
+            android:textColor="@color/negro" />
+
+        <Button
+            android:id="@+id/not_btn_enviar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="50"
+            android:text="Enviar"
+            android:textColor="@color/negro" />
+
+    </LinearLayout>
+
+</LinearLayout>
